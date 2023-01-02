@@ -1,0 +1,43 @@
+body{
+    margin:0px;
+    
+    
+}
+.img-bg{
+    background-image:url(../static/1.jpg);
+    background-repeat:no-repeat;
+    background-size:500px;
+}
+
+.form-predict{
+    margin: 50px;
+    margin-left: 600px;
+    margin-top:200px;
+}
+
+
+
+
+.img {
+   
+    background: url('../static/1.jpg');
+   
+	background-repeat: no-repeat;
+  background-size: auto;
+  background-size:100% 100%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(10px);
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+
+  }
+  
+
