@@ -10,24 +10,18 @@
 <body>
     <div class="img-log"></div>
     <div class="box">
-        <div class="form">
-            <h2>LOGIN</h2>
-            <div class="inputBox">
-                <input type="text" required>
-                <span>Email</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input type="password" required>
-                <span>Password</span>
-                <i></i>
-            </div>
-            <div class="links">
-                <a href="#">Does not have an account?</a>
-                <a href="#">Signup</a>
-            </div>
-            <input type="submit" value="Login">
-        </div>
+    <form action="{{ url_for('login') }}" method="post">
+        <label for="username">
+            <i class="fas fa-user"></i>
+        </label>
+        <input type="text" name="username" placeholder="Username" id="username" required>
+        <label for="password">
+            <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <div class="msg">{{ msg }}</div>
+        <input type="submit" value="Login">
+    </form>
     </div>
 </body>
 </html>
