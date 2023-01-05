@@ -1,0 +1,12 @@
+create database flaskdb;
+use flaskdb;
+
+Create table accounts
+(
+username varchar(40),
+password varchar(8),
+email varchar(80))
+
+select * from accounts
+
+--All CRUD Operations
