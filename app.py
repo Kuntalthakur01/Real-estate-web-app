@@ -13,16 +13,13 @@ model = pickle.load(open("model.pkl", "rb"))
 app.secret_key = 'Cogniscience'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_PASSWORD'] = '12345678'
 app.config['MYSQL_DB'] = 'flaskdb'
 
 mysql = MySQL(app)
 
-
-
-
 ## PREDICTION FUNCTION
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/price_predictor", methods=['GET', 'POST'])
 def price_predictor():
     if request.method == 'POST':
         int_features = [int(x) for x in request.form.values()]
@@ -34,10 +31,9 @@ def price_predictor():
     return render_template('predict.html')
 
 
-
 @app.route("/login", methods=['POST', 'GET'])
 def login():
-    msg = 'Sorry'
+    msg = 'Invalid Credentials'
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
@@ -46,32 +42,13 @@ def login():
         cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
         # Fetch one record and return result
         account = cursor.fetchone()
-
-        # If account exists in accounts table in out database
         if account:
-            # Create session data, we can access this data in other routes
-            session['loggedin'] = True
-            session['id'] = account['id']
-            session['username'] = account['username']
-            # Redirect to home page
-            return redirect(url_for('home'))
-
+            return redirect(url_for('price_predictor'))
         else:
-            # Account doesnt exist or username/password incorrect
-            msg = 'Incorrect username/password!'
-    return render_template('login.html', msg=msg)
+            return render_template('login.html', msg=msg)
 
 
-# http://localhost:5000/python/logout - this will be the logout page
-@app.route('/logout')
-def logout():
-    # Remove session data, this will log the user out
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('username', None)
-    # Redirect to login page
-    return redirect(url_for('login'))
-
+    return render_template('login.html')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -98,19 +75,15 @@ def register():
             msg = 'Please fill out the form!'
         else:
             # Account doesnt exists and the form data is valid, now insert new account into accounts table
-            cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, password, email,))
+            cursor.execute('INSERT INTO accounts VALUES (%s, %s, %s)', (username, password, email,))
             mysql.connection.commit()
             msg = 'You have successfully registered!'
-
+        return redirect(url_for("login"))
     elif request.method == 'POST':
         # Form is empty... (no POST data)
         msg = 'Please fill out the form!'
     # Show registration form with message (if any)
     return render_template('register.html', msg=msg)
-
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)

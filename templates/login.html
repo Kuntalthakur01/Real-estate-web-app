@@ -8,20 +8,33 @@
     <link rel="stylesheet" href="../templates/signin.js">
 </head>
 <body>
-    <div class="img-log"></div>
+    <form action="/login" method="post">
+        <div class="img-log"></div>
     <div class="box">
-    <form action="{{ url_for('login') }}" method="post">
-        <label for="username">
-            <i class="fas fa-user"></i>
-        </label>
-        <input type="text" name="username" placeholder="Username" id="username" required>
-        <label for="password">
-            <i class="fas fa-lock"></i>
-        </label>
-        <input type="password" name="password" placeholder="Password" id="password" required>
+        <div class="form">
+            <h2>LOGIN</h2>
+            <div class="inputBox">
+                <input type="text" name="username" required>
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="#">Do not have an account?</a>
+                <a href="{{url_for('register')}}">Signup</a>
+            </div>
+            
+        {% if msg %}
         <div class="msg">{{ msg }}</div>
+        {% endif %}
         <input type="submit" value="Login">
-    </form>
+        </div>
     </div>
+    </form>
+    
 </body>
 </html>

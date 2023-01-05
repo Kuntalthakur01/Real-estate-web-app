@@ -24,36 +24,39 @@
             Login
         </button>
     </form> -->
-
-    <div class="box">
-        <div class="form">
-            <h2>REGISTER</h2>
-            <div class="inputBox">
-                <input type="text" required>
-                <span>Email</span>
-                <i></i>
+    <form action="/" method="post">
+        <div class="box">
+            <div class="form">
+                <h2>REGISTER</h2>
+                <div class="inputBox">
+                    <input type="email" name="email" required>
+                    <span>Email</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="username" required>
+                    <span>Name</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password" required>
+                    <span>Password</span>
+                    <i></i>
+                </div>
+                <div class="links">
+                    <a >Already have an account ? </a>
+                    <a href="{{url_for('login')}}">Login</a>
+                </div>
+                
+                <input type="submit" value="Submit">
+                
+                <button class="login">Login</button>
+    
+                
             </div>
-            <div class="inputBox">
-                <input type="text" required>
-                <span>Name</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input type="password" required>
-                <span>Password</span>
-                <i></i>
-            </div>
-            <div class="links">
-                <a >Does not have an account ? </a>
-                <a href="#">Login</a>
-            </div>
-            
-            <input type="submit" value="Submit">
-            
-            <button class="login">Login</button>
-
-            
         </div>
-    </div>
+    </form>
+
+    
 </body>
 </html>
