@@ -25,7 +25,7 @@ def price_predictor():
         int_features = [int(x) for x in request.form.values()]
         final_features = [np.array(int_features)]
         price = model.predict(final_features)[0][0]
-        final_price = np.round(price, 2)
+        final_price = np.round(price)
         print(f"Final features:{final_features}")
         return render_template('predict.html', final_price=final_price)
     return render_template('predict.html')
