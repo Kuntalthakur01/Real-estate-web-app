@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-estate</title>
     <link rel="stylesheet" href="../static/login.css">
-    <link rel="stylesheet" href="../templates/signin.js">
+  
 </head>
 <body>
     <form action="/login" method="post">
@@ -28,6 +28,8 @@
                 <a href="{{url_for('register')}}">Signup</a>
             </div>
             
+            
+
         {% if msg %}
         <div class="msg">{{ msg }}</div>
         {% endif %}
@@ -36,5 +38,9 @@
     </div>
     </form>
     
+
+
+
+      
 </body>
 </html>

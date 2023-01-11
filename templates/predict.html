@@ -11,7 +11,9 @@
 </head>
 
 <body>
-    <div class="img"></div>
+    <div class="img">
+
+    </div>
     <div>
 
         <form class="form-predict" action="/price_predictor" method="post">
@@ -38,15 +40,17 @@
 
         </form>
 
-    <p>
-        {% if final_price %}
-
-        <h3>Price: ${{final_price.round()}}</h3>
+        <div class="final-p">
+            <p>
+                {% if final_price %}
+        
+                <h3>Price: ${{final_price.round()}}</h3>
         
         
-        {% endif %}
-
-    </p>
+                {% endif %}
+        
+            </p>
+            </div>
 
     </div>
 
